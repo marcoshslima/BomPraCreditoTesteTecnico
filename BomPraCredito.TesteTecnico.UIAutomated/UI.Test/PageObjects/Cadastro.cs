@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,9 @@ namespace UI.Test.PageObjects
 
         [FindsBy(How = How.Id, Using = "email")]
         public IWebElement txtEmail { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='client-name simple-row']")]
+        public IWebElement txtNomeCliente { get; set; }
         #endregion
 
         #region Metodos
@@ -82,7 +86,6 @@ namespace UI.Test.PageObjects
                     break;
             }
         }
-
         public void QuantasVezes(string value)
         {
             switch (value)
@@ -104,7 +107,6 @@ namespace UI.Test.PageObjects
                     break;
             }
         }
-
         public void PreencherNome(string name)
         {
             txtNomeCompleto.SendKeys(name);
@@ -113,11 +115,18 @@ namespace UI.Test.PageObjects
         {
             txtEmail.SendKeys(email);
         }
-
         public void ConfirmarCadastro()
         {
             btnContinue.Click();
         }
+
+        public void ValidarNome(string nome) {
+            Assert.AreEqual(nome, txtNomeCliente.Text, "O Nome do cliente está diferente ao nome informado");
+        }
+
+
         #endregion
+
+
     }
 }

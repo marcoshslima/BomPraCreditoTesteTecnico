@@ -91,7 +91,8 @@ this.ScenarioInitialize(scenarioInfo);
 #line 13
  testRunner.When("Eu clicar no botão [Continuar]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
- testRunner.Then("O sistema deve apresentar a tela Seus dados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("O sistema deve apresentar a tela [Seus Dados] com o nome da pessoa que está solic" +
+                    "itando o crédito", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

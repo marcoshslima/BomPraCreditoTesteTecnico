@@ -51,6 +51,7 @@ namespace UI.Test.StepDefinitions
         public void GivenEuPreenchoOCampoSeuNomeCompletoComAInformacao(string pnomeCompleto)
         {
             _cadastro.PreencherNome(pnomeCompleto);
+            ScenarioContext.Current.Add("Nome", pnomeCompleto);
             Utils.Wait(3000);
         }
 
@@ -68,17 +69,19 @@ namespace UI.Test.StepDefinitions
         public void WhenEuClicarNoBotaoContinuar()
         {
             _cadastro.ConfirmarCadastro();
-            Utils.Wait(3);
+            Utils.Wait(10000);
         }
 
         #endregion
 
         #region Then
-        [Then(@"O sistema deve apresentar a tela Seus dados")]
-        public void ThenOSistemaDeveApresentarATelaSeusDados()
+        [Then(@"O sistema deve apresentar a tela \[Seus Dados] com o nome da pessoa que está solicitando o crédito")]
+        public void ThenOSistemaDeveApresentarATelaSeusDadosComONomeDaPessoaQueEstaSolicitandoOCredito()
         {
-           //
+            _cadastro.ValidarNome(ScenarioContext.Current.Get<string>("Nome"));
+            Utils.Wait(3000);
         }
+
 
         #endregion
     }

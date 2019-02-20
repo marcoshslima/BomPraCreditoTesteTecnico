@@ -11,5 +11,5 @@ Scenario: Realizar Cadastro no site BomPraCredito
 	And Eu preencho o campo [Seu nome Completo] com a informação "Marcos Lima"
 	And Eu preencheo o campo [Seu e-mail] com a informação "marcos@bompracredito.com.br"
 	When Eu clicar no botão [Continuar]
-	Then O sistema deve apresentar a tela Seus dados
+	Then O sistema deve apresentar a tela [Seus Dados] com o nome da pessoa que está solicitando o crédito
 
