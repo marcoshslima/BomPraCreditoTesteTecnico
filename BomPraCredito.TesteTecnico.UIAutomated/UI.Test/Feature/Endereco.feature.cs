@@ -18,20 +18,20 @@ namespace UI.Test.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Cadastro")]
-    public partial class CadastroFeature
+    [NUnit.Framework.DescriptionAttribute("Endereco")]
+    public partial class EnderecoFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "Cadastro.feature"
+#line 1 "Endereco.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Cadastro", " Eu como usuário\r\n Quero realizar meu cadastro no site BomPraCredito\r\n E solicita" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Endereco", " Eu como usuário\r\n Quero realizar meu cadastro no site BomPraCredito\r\n E solicita" +
                     "r um empréstimo com sucesso.", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -71,10 +71,11 @@ namespace UI.Test.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CT001 - Realizar Cadastro no site BomPraCredito")]
-        public virtual void CT001_RealizarCadastroNoSiteBomPraCredito()
+        [NUnit.Framework.DescriptionAttribute("CT001 - Realizar o Preecdhimento do Formulario Endereço")]
+        [NUnit.Framework.TestCaseAttribute("Assalariado", "Desenhista", null)]
+        public virtual void CT001_RealizarOPreecdhimentoDoFormularioEndereco(string ocupacao, string profissao, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CT001 - Realizar Cadastro no site BomPraCredito", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CT001 - Realizar o Preecdhimento do Formulario Endereço", null, exampleTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -94,35 +95,51 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then("O sistema deve apresentar a tela [Seus Dados] com o nome da pessoa que está solic" +
                     "itando o crédito", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("CT002 - Validação dos Campos Obrigatórios da Página Cadastre")]
-        [NUnit.Framework.TestCaseAttribute("", "24", "Marcos Lima", "marcos@bomprecedito.com.br", "Valor obrigatório", null)]
-        [NUnit.Framework.TestCaseAttribute("2000", "", "Marcos Lima", "marcos@bomprecedito.com.br", "Qtd. Parcelas obrigatória", null)]
-        [NUnit.Framework.TestCaseAttribute("2000", "9", "", "marcos@bomprecedito.com.br", "Nome obrigatório", null)]
-        [NUnit.Framework.TestCaseAttribute("2000", "9", "Marcos Lima", "", "E-mail obrigatório", null)]
-        public virtual void CT002_ValidacaoDosCamposObrigatoriosDaPaginaCadastre(string deQtoVocePrecisa, string emQtasVezes, string seuNomeCompleto, string seuEmail, string msgValidacao, string[] exampleTags)
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("CT002 - Validação dos Campos Obrigatórios da Página Cadastre", null, exampleTags);
-#line 15
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 16
- testRunner.Given("Eu acesso a url \"https://demo.bompracredito.com.br/emprestimo-pessoal/\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "CPF",
+                        "DataNascimento",
+                        "RendaMensal",
+                        "Sexo",
+                        "EstadoCivil",
+                        "GrauInstrucao",
+                        "ContaNoBanco",
+                        "Cheques",
+                        "RestricaoNome",
+                        "ImovelProprio",
+                        "AutomovelProprio"});
+            table1.AddRow(new string[] {
+                        "Dinamico",
+                        "25111991",
+                        "300000",
+                        "M",
+                        "Solteiro",
+                        "Superior Incompleto",
+                        "Outros",
+                        "Não",
+                        "Sim",
+                        "Não",
+                        "Sim"});
+#line 14
+ testRunner.When("Eu preencher os campos da tela [Seus dados] com as informações abaixo", ((string)(null)), table1, "When ");
 #line 17
- testRunner.And(string.Format("Eu seleciono o valor \"{0}\" da opção [De quanto você precisa?(R$)]", deQtoVocePrecisa), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("Informar a ocupação \"{0}\" e Profissão \"{1}\"", ocupacao, profissao), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
- testRunner.And(string.Format("eu seleciono o valor \"{0}\" da opção [Em quantas vezes?]", emQtasVezes), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Eu clicar no botão [Continuar] da funcionalidade [Seus Dados]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 19
- testRunner.And(string.Format("Eu preencho o campo [Seu nome Completo] com a informação \"{0}\"", seuNomeCompleto), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("O sistema deve apresentar a tela de [Endereço]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 20
- testRunner.And(string.Format("Eu preencheo o campo [Seu e-mail] com a informação \"{0}\"", seuEmail), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("Eu informar o Cep \"09854050\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 21
- testRunner.When("Eu clicar no botão [Continuar]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("Preenher o campo Número \"510\" , Telefone Celular \"99976545432\" e Finalidade do Em" +
+                    "prestimo \"Viajar\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 22
- testRunner.Then(string.Format("o sistema deve apresentar a mensagem de validação \"{0}\"", msgValidacao), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("Eu clicar no botão [Continuar] da tela [Endereco]", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 23
+ testRunner.Then("O sistema deve apresentar a páina \"https://demo.bompracredito.com.br/v2/resultado" +
+                    "\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 24
+ testRunner.And("Deve ocorrer um redirect para página \"https://demo.bompracredito.com.br/v2/cadast" +
+                    "rocompleto\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }

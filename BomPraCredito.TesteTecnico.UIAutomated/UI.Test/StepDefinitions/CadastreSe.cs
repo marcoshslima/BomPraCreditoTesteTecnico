@@ -16,13 +16,13 @@ namespace UI.Test.StepDefinitions
 
         #region variables
         private IWebDriver _driver;
-        private Cadastro _cadastro;
+        private POCadastro _cadastro;
         #endregion
 
         public CadastreSe(IWebDriver _driver)
         {
             this._driver = _driver;
-            _cadastro = new Cadastro(_driver);
+            _cadastro = new POCadastro(_driver);
         }
 
         #region Given
@@ -62,7 +62,7 @@ namespace UI.Test.StepDefinitions
             Utils.Wait(3000);
         }
 
-        #endregion
+       #endregion
 
         #region When
         [When(@"Eu clicar no botão \[Continuar]")]
@@ -80,6 +80,12 @@ namespace UI.Test.StepDefinitions
         {
             _cadastro.ValidarNome(ScenarioContext.Current.Get<string>("Nome"));
             Utils.Wait(3000);
+        }
+
+        [Then(@"o sistema deve apresentar a mensagem de validação ""(.*)""")]
+        public void ThenOSistemaDeveApresentarAMensagemDeValidacao(string msg)
+        {
+            _cadastro.ValidaMsgCampoObrigario(msg);
         }
 
 

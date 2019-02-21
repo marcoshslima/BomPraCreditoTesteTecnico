@@ -6,13 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UI.Test.Utilities;
 
 namespace UI.Test.PageObjects
 {
-    class Cadastro
+    class POCadastro
     {
-        public Cadastro(IWebDriver _driver)
+        private IWebDriver _driver;
+        public POCadastro(IWebDriver _driver)
         {
+            this._driver = _driver;
             PageFactory.InitElements(_driver,this);
         }
 
@@ -61,8 +64,13 @@ namespace UI.Test.PageObjects
 
         [FindsBy(How = How.XPath, Using = "//div[@class='client-name simple-row']")]
         public IWebElement txtNomeCliente { get; set; }
+
+        [FindsBy(How = How.ClassName, Using = "error-message")]
+        public IWebElement campoObrigatorio { get; set; }
         #endregion
 
+
+            
         #region Metodos
 
         public void PrecisaDeQuanto(string value)
@@ -81,8 +89,10 @@ namespace UI.Test.PageObjects
                 case "10000":
                     btnDezMil.Click();
                     break;
-                default:
+                case "Outro Valor":
                     btnOutroValor.Click();
+                    break;
+                default:
                     break;
             }
         }
@@ -102,8 +112,10 @@ namespace UI.Test.PageObjects
                 case "24":
                     btnVinteQuatroVezes.Click();
                     break;
-                default:
+                case "Outro Prazo":
                     btnOutroPrazo.Click();
+                    break;
+                default:
                     break;
             }
         }
@@ -119,14 +131,17 @@ namespace UI.Test.PageObjects
         {
             btnContinue.Click();
         }
-
         public void ValidarNome(string nome) {
             Assert.AreEqual(nome, txtNomeCliente.Text, "O Nome do cliente está diferente ao nome informado");
         }
-
-
+        public void ValidaMsgCampoObrigario(string msg)
+        {
+            Utils.Wait(3000);
+            Assert.IsTrue(Utils.VerificarElementExists(_driver,By.XPath("//span[(text()='"+msg+"')])")), "O campo obrigatorio não apresentou a mensagem de validação "  + msg);
+            Console.WriteLine(campoObrigatorio.Text);
+            
+        }
         #endregion
-
 
     }
 }
