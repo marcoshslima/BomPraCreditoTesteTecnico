@@ -137,9 +137,7 @@ namespace UI.Test.PageObjects
         public void ValidaMsgCampoObrigario(string msg)
         {
             Utils.Wait(3000);
-            Assert.IsTrue(Utils.VerificarElementExists(_driver,By.XPath("//span[(text()='"+msg+"')])")), "O campo obrigatorio não apresentou a mensagem de validação "  + msg);
-            Console.WriteLine(campoObrigatorio.Text);
-            
+            Assert.IsTrue(Utils.VerificarElementExists(_driver,By.XPath("//span[contains(text(),'"+msg+"')]")), "O campo obrigatorio não apresentou a mensagem de validação "  + msg);
         }
         #endregion
 

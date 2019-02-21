@@ -61,9 +61,9 @@ namespace UI.Test.Utilities
             {
                 _driver.FindElement(contexto);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                Console.WriteLine(e.ToString());
                 exist = false;
             }
             return exist;
